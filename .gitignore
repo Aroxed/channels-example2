@@ -6,4 +6,9 @@ __pycache__/
 *.db
 *.sqlite3
 *.sqlite
-.idea/
+.idea/*
+venv/
+*.pid
+*.log
+*.lock
+*.sock

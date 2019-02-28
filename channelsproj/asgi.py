@@ -2,6 +2,6 @@ import os
 import django
 from channels.routing import get_default_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "notifier.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "channelsproj.settings")
 django.setup()
-application =git -v get_default_application()
+application = get_default_application()

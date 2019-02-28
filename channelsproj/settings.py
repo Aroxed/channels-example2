@@ -124,3 +124,5 @@ CHANNEL_LAYERS = {
         "CONFIG": {"hosts": [("localhost", 6379)]},
     }
 }
+
+STATIC_ROOT = os.path.join(BASE_DIR, "static_collected/")

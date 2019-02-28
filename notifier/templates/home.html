@@ -14,7 +14,7 @@
       const webSocketBridge = new channels.WebSocketBridge();
       const nl = document.querySelector("#notifylist");
       
-      webSocketBridge.connect('/notifications/');
+      webSocketBridge.connect('ws://127.0.0.1:8000/notifications/');
       webSocketBridge.listen(function(action, stream) {
         console.log("RESPONSE:", action);
         if(action.event == "New User") {
