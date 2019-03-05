@@ -14,16 +14,11 @@ class SingleConsumer(AsyncJsonWebsocketConsumer):
         if 'user' in self.scope and not self.scope['user'].is_anonymous:
             the_user = self.scope['user']
             self.redis.hset("users", the_user.username, self.channel_name)
-            await self.channel_layer.group_add("user_{}".format(the_user.username), self.channel_name)
         await self.channel_layer.group_add("loggedin", self.channel_name)
         print(f"Added {self.channel_name} channel to loggedin")
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard("loggedin", self.channel_name)
-        if 'user' in self.scope and not self.scope['user'].is_anonymous:
-            the_user = self.scope['user']
-            await self.channel_layer.group_discard("user_{}".format(the_user.username), self.channel_name)
-
         if 'user' in self.scope:
             self.redis.hdel("users", self.scope['user'].username)
         print(f"Removed {self.channel_name} channel to loggedin")

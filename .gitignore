@@ -6,9 +6,12 @@ __pycache__/
 *.db
 *.sqlite3
 *.sqlite
-.idea/*
+
 venv/
 *.pid
 *.log
 *.lock
 *.sock
+
+.DS_Store
+.idea

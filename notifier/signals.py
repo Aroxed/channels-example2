@@ -31,8 +31,8 @@ def logged_in(sender, user, request, **kwargs):
         channel_name = r.hget("users", "z1").decode("utf-8")
         if channel_name:
             channel_layer = get_channel_layer()
-            async_to_sync(channel_layer.group_send)(
-                "user_z1", {
+            async_to_sync(channel_layer.send)(
+                channel_name, {
                     "type": "private.message",
                     "text": "Hello, Z1!",
                 })
